@@ -3,9 +3,8 @@ package ensa.mobile.ivisitservice.beta.model;
 
 import lombok.*;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter

@@ -4,6 +4,7 @@ package ensa.mobile.ivisitservice.beta.model;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,5 +18,8 @@ public class Comment extends AbstractAuditableEntity<Account ,Long>{
 
     private String content;
     private int likes;
+
+    @ManyToOne
+    private Post post;
 
 }
