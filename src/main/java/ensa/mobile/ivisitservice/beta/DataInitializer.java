@@ -5,25 +5,42 @@ import ensa.mobile.ivisitservice.beta.model.Account;
 import ensa.mobile.ivisitservice.beta.model.Comment;
 import ensa.mobile.ivisitservice.beta.model.Post;
 import ensa.mobile.ivisitservice.beta.model.User;
+import ensa.mobile.ivisitservice.beta.service.AccountService;
 import ensa.mobile.ivisitservice.beta.service.CommentService;
 import ensa.mobile.ivisitservice.beta.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
 
 
+
+    private final PostService postService;
+    private final CommentService commentService;
+    private final AccountService accountService;
+    private final PasswordEncoder passwordEncoder;
+
+
     @Autowired
-    private PostService postService;
-    @Autowired
-    private CommentService commentService;
+    public DataInitializer(PostService postService, CommentService commentService, AccountService accountService, PasswordEncoder passwordEncoder) {
+        this.postService = postService;
+        this.commentService = commentService;
+        this.accountService = accountService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public void run(String... args) throws Exception {
 
-        Account account = Account.builder().email("youssef@gmail.com").password("youssef").username("youssefibi").build();
+        Account account = Account.builder().email("admin@mail.com").username("admin").password(
+                this.passwordEncoder.encode("admin")).roles(Arrays.asList("ROLE_ADMIN"))
+                .build();
+        accountService.create(account);
         User user = User.builder().account(account).firstName("youssef").lastName("idder").build();
         User user1 = User.builder().account(account).firstName("aniss").lastName("mbk").build();
 
