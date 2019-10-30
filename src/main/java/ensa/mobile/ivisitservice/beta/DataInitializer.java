@@ -13,6 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 @Component
@@ -47,10 +48,15 @@ public class DataInitializer implements CommandLineRunner {
         Post post = Post.builder().description("So here's what happened... Apparently we were so engaged in tonight " +
                 "meetup that we forgot to take any picture! But it was nice, packed and dark thanks everyone who joined," +
                 " please feel free to follow with any").title("Marrakech City").build();
-        postService.create(post);
+
 
         Comment comment = Comment.builder().content("this is a good place !!").post(post).build();
+
+        post.getComments().add(comment);
+
+        postService.create(post);
         commentService.create(comment);
+
 
         Post post1 = Post.builder().description("Tu es doué en programmation ? Et tu es à la recherche d'une nouvelle " +
                 "opportunité professionnelle ? Notre campagne de recrutement te permet de postuler pour un CDI en France" +
