@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface AccountRepository extends RepositoryWithSpecification<Account, Long>{
     Optional<Account> findById(Long id);
     Optional<Account> findByUsername(String username);
+
 }

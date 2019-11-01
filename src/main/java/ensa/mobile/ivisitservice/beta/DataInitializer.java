@@ -51,11 +51,14 @@ public class DataInitializer implements CommandLineRunner {
 
 
         Comment comment = Comment.builder().content("this is a good place !!").post(post).build();
+        Comment comment1 = Comment.builder().content("this is a good place !!").post(post).build();
 
         post.getComments().add(comment);
+        post.getComments().add(comment1);
 
         postService.create(post);
         commentService.create(comment);
+        commentService.create(comment1);
 
 
         Post post1 = Post.builder().description("Tu es doué en programmation ? Et tu es à la recherche d'une nouvelle " +

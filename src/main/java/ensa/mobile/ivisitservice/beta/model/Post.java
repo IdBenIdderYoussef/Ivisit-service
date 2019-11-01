@@ -5,9 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -21,7 +19,6 @@ public class Post extends AbstractAuditableEntity<Account , Long>{
     private String title;
     private String description;
     private String picture;
-    private int likes;
 
     @Embedded
     private Address address;
@@ -31,5 +28,11 @@ public class Post extends AbstractAuditableEntity<Account , Long>{
             fetch = FetchType.LAZY,
             mappedBy = "post")
     private List<Comment> comments = new ArrayList<Comment>();
+
+    @Builder.Default
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "post")
+    private List<Like> likes = new ArrayList<Like>();
 
 }
