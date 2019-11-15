@@ -21,8 +21,7 @@ public class User extends AbstractAuditableEntity<Account , Long>{
     private String lastName;
     private String picture;
 
-    @Embedded
-    private Address address;
+
 
     @OneToOne
     private Account account;

@@ -18,6 +18,7 @@ public class Post extends AbstractAuditableEntity<Account , Long>{
 
     private String title;
     private String description;
+    @Column(columnDefinition = "LONGBLOB")
     private String picture;
 
     @Embedded
@@ -34,5 +35,13 @@ public class Post extends AbstractAuditableEntity<Account , Long>{
             fetch = FetchType.LAZY,
             mappedBy = "post")
     private List<Like> likes = new ArrayList<Like>();
+
+
+    @Builder.Default
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "post")
+    private List<Report> reports = new ArrayList<Report>();
+
 
 }

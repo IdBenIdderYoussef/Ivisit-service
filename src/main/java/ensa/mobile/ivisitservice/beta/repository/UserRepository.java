@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends RepositoryWithSpecification<User, Long> {
 
+    public User findByAccountId(Long id);
+
 }

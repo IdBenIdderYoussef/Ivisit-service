@@ -6,8 +6,13 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserService extends AbstractService<Long , UserRepository, User> {
+public class UserService extends AbstractService<Long, UserRepository, User> {
     public UserService(UserRepository repository) {
         super(repository);
     }
+
+    public User findByAccountId(Long id) {
+        return repository.findByAccountId(id);
+    }
+
 }

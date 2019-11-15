@@ -35,19 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private static final String[] AUTH_WHITELIST = {
-            /*"/v1/posts/",*/
+            "/v1/posts/",
             "/auth/**",
-            "/quote-mails/**",
-            "/assets/**",
-            // -- swagger ui
-            "/v2/api-docs",
-            "/swagger-resources",
-            "/swagger-resources/**",
-            "/configuration/ui",
-            "/configuration/security",
-            "/swagger-ui.html",
-            "/webjars/**",
-            "/v1/leave-request/export/**"
+            "/v1/accounts/**"
     };
 
     @Autowired
