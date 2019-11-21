@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/posts")
 public class PostController extends AbstractController<Long , PostService, PostRepository, Post> {
@@ -15,4 +17,8 @@ public class PostController extends AbstractController<Long , PostService, PostR
         super(service);
     }
 
+    @Override
+    public List<Post> findAll() {
+        return service.findAll();
+    }
 }

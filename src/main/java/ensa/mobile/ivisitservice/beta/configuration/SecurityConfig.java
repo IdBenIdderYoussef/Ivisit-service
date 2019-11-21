@@ -35,7 +35,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private static final String[] AUTH_WHITELIST = {
-            "/v1/posts/",
+            "/v1/posts/**",
+            "/v1/comments/**",
+            "/v1/likes/**",
             "/auth/**",
             "/v1/accounts/**"
     };
